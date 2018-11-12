@@ -3,7 +3,6 @@ services:
 
     nginx:
         build: .
-        image: umputun/nginx-le:latest
         hostname: nginx
         restart: always
         container_name: nginx
@@ -16,14 +15,14 @@ services:
 
         volumes:
             - ./etc/ssl:/etc/nginx/ssl
-            - ./etc/service-example.conf:/etc/nginx/service.conf
+            # - ./etc/service-example.conf:/etc/nginx/service.conf
             # - ./etc/service-example-2.conf:/etc/nginx/service2.conf # more services, should be service*.conf
         ports:
             - "80:80"
             - "443:443"
 
         environment:
-            - TZ=America/Chicago
+            - TZ=Europe/Moscow
             - LETSENCRYPT=true
             - LE_EMAIL=name@example.com
             - LE_FQDN=www.example.com
